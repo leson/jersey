@@ -17,4 +17,8 @@ mvn clean package
 put target/${project}.war to tomcat/webapps/ folder
 
 ## startup tomcat and test
-http://localhost:8080/jerseyWeb/webapi/myresource
+> 1> [get json](http://localhost:8080/jerseyWeb/api/demo/getJson)
+
+> 2> [get Info](http://localhost:8080/jerseyWeb/api/demo/getInfo)
+
+> 3> [receive parameters](http://localhost:8080/jerseyWeb/api/demo/xxx)
