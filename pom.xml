@@ -29,10 +29,20 @@
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-servlet-core</artifactId>
 			<!-- use the following artifactId if you don't need servlet 2.x compatibility -->
-			<!-- artifactId>jersey-container-servlet</artifactId -->
+			<!-- <artifactId>jersey-container-servlet</artifactId -->
 		</dependency>
-		<!-- uncomment this to get JSON support <dependency> <groupId>org.glassfish.jersey.media</groupId> 
-			<artifactId>jersey-media-moxy</artifactId> </dependency> -->
+		<!-- uncomment this to get JSON support -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.glassfish.jersey.media</groupId> -->
+<!-- 			<artifactId>jersey-media-moxy</artifactId> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>com.colobu</groupId>
+			<artifactId>fastjson-jaxrs-json-provider</artifactId>
+			<version>0.3.2</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
