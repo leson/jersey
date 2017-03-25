@@ -51,13 +51,15 @@
 				}
 			});
 		}
+		
+		//resolved the post pass json ,data:JsonStr;
 		function testPassJsonByPost() {
-			var jsonObj1 = JSON.stringify($("#testForm").serializeObject());
-			console.log("ajax post json:" + jsonObj1);
+			var jsonStr = JSON.stringify($("#testForm").serializeObject());
+			console.log("ajax post json:" + jsonStr);
 			$.ajax({
 				url : 'api/demo/testPost',
 				type : 'POST',
-				data : jsonObj1,
+				data : jsonStr,
 				dataType : 'json',
 				contentType : 'application/json',
 				async : false,

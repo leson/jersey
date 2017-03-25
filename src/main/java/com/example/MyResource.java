@@ -128,11 +128,11 @@ public class MyResource {
 	@GET
 	@Path("/testGet")
 	@Produces("application/json")
-	public Map<String, String> testGet(@QueryParam(value = "a1") String a1, @QueryParam(value = "a2") String a2) {
+	public Map<String, String> testGet(@QueryParam(value = "userName") String a1, @QueryParam(value = "age") String a2) {
 		System.out.println(a1);
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("a1", a1);
-		map.put("a2", a2);
+		map.put("userName", a1);
+		map.put("age", a2);
 		System.out.println(map);
 		return map;
 	}
