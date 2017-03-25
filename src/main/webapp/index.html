@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+	<h2>Jersey RESTful Web Application!</h2>
+	<ul>
+		<li><a href="api/demo">demo</a></li>
+		<li><a href="api/demo/getInfo">getInfo</a></li>
+		<li><a href="api/demo/param?val=122344abc">param?val=12123344</a></li>
+		<li><a href="api/demo/map">map</a></li>
+		<li><a href="api/demo/list">list</a></li>
+		<li><a href="api/demo">....</a></li>
+	</ul>
+
+	<form id="testForm" action="api/demo/update" method="post">
+		<input type="text" name="a1" value="3a"> <input type="text"
+			name="a2" value="3b">
+		<button type="submit">submit</button>
+	</form>
+
+	<script type="text/javascript"
+		src="./assets/jquery-1.12.4/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="./assets/plugins/jquery-form-json.js"></script>
+	<script type="text/javascript">
+		var jsonObj = $("#testForm").serializeObject();
+		console.log(jsonObj);
+
+		//not success.report :
+		function testPostJson() {
+			$.ajax({
+				url : 'api/demo/update',
+				type : 'POST',
+				data : {
+					a1 : "a1111",
+					a2 : "a22222"
+				},
+				dataType : 'json',
+				contentType : 'application/json',
+				async : false,
+				success : function(data) {
+					console.log("response data:" + data);
+				},
+				error : function() {
+					alert("ajax error");
+				}
+			});
+		}
+		function testGetPassJson() {
+			$.ajax({
+				url : 'api/demo/requestTest',
+				type : 'GET',
+				data : jsonObj,
+				dataType : 'json',
+				contentType : 'application/json',
+				async : false,
+				success : function(data) {
+					console.log("response data:" + data);
+				},
+				error : function() {
+					alert("ajax error");
+				}
+			});
+		}
+	</script>
+</body>
+</html>
