@@ -15,8 +15,8 @@
 	<form id="testForm" action="api/demo/update" method="post">
 		<label>a1 <input type="text" name="a1" value="3a"><label>a2<input
 				type="text" name="a2" value="3b"></label> <label><button
-					type="submit">submit</button></label> <label><button type="button"
-					onclick="testPostJson();">ajax submit</button></label>
+					type="submit">form post submit</button></label> <label><button type="button"
+					onclick="testPassJsonByGet();">ajax get submit</button></label>
 	</form>
 
 	<script type="text/javascript"
@@ -24,8 +24,8 @@
 	<script type="text/javascript"
 		src="./assets/plugins/jquery-form-json.js"></script>
 	<script type="text/javascript">
-		//
-		function testPostJson() {
+		//get request ,not safety.but not find post json's method so far .need further study.
+		function testPassJsonByGet() {
 			console.log("get in method");
 			var jsonObj = $("#testForm").serializeObject();
 			console.log(jsonObj);
@@ -35,7 +35,7 @@
 				data : jsonObj,
 				dataType : 'json',
 				contentType : 'application/json',
-				async : true,
+				async : false,
 				success : function(data) {
 					console.log("response data:" + data);
 					console.log(JSON.stringify(data));
