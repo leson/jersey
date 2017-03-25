@@ -13,9 +13,10 @@
 	</ul>
 
 	<form id="testForm" action="api/demo/update" method="post">
-		<input type="text" name="a1" value="3a"> <input type="text"
-			name="a2" value="3b">
-		<button type="submit">submit</button>
+		<label>a1 <input type="text" name="a1" value="3a"><label>a2<input
+				type="text" name="a2" value="3b"></label> <label><button
+					type="submit">submit</button></label> <label><button type="button"
+					onclick="testPostJson();">ajax submit</button></label>
 	</form>
 
 	<script type="text/javascript"
@@ -28,18 +29,17 @@
 
 		//not success.report :
 		function testPostJson() {
+			console.log("get in method");
 			$.ajax({
-				url : 'api/demo/update',
-				type : 'POST',
-				data : {
-					a1 : "a1111",
-					a2 : "a22222"
-				},
+				url : 'api/demo/testGet',
+				type : 'get',
+				data : {"a1":"1111111","a2":"2222222"},
 				dataType : 'json',
 				contentType : 'application/json',
-				async : false,
+				async : true,
 				success : function(data) {
 					console.log("response data:" + data);
+					console.log(JSON.stringify(data));
 				},
 				error : function() {
 					alert("ajax error");

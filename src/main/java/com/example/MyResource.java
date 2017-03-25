@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -45,6 +46,7 @@ public class MyResource {
 
 	/**
 	 * api/demo/param?val=122344abc
+	 * 
 	 * @param parameter
 	 * @param value
 	 * @return
@@ -53,7 +55,7 @@ public class MyResource {
 	@Path("/{param}")
 	public Response respondMessage(@PathParam("param") String parameter,
 			@DefaultValue("Nothing to say") @QueryParam("val") String value) {
-		String out = "Hello from [" + parameter + "]:value:[" + value+"]";
+		String out = "Hello from [" + parameter + "]:value:[" + value + "]";
 		return Response.status(200).entity(out).build();
 	}
 
@@ -87,6 +89,7 @@ public class MyResource {
 
 	/**
 	 * need submit from form page.
+	 * 
 	 * @param a1
 	 * @param a2
 	 * @return
@@ -100,15 +103,33 @@ public class MyResource {
 		map.put("a2", a2);
 		return map;
 	}
-
-//	@GET
-//	@Path("/requestTest")
-//	@Produces("application/json")
-//	public Map<String, String> update(@Context HttpServletRequest request) {
-//		Map<String, String> map = new HashMap<String, String>();
-//		map.put("a1", request.getParameter("a1"));
-//		map.put("a2", request.getParameter("a2"));
-//		map.put("a3", request.getQueryString());
-//		return map;
-//	}
+	
+	/**
+	 * can be use for ajax ,pass json.
+	 * @param a1
+	 * @param a2
+	 * @return
+	 */
+	@GET
+	@Path("/testGet")
+	@Produces("application/json")
+	public Map<String, String> testGet(@QueryParam(value = "a1") String a1, @QueryParam(value = "a2") String a2) {
+		System.out.println(a1);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("a1", a1);
+		map.put("a2", a2);
+		System.out.println(map);
+		return map;
+	}
+	
+	// @GET
+	// @Path("/requestTest")
+	// @Produces("application/json")
+	// public Map<String, String> update(@Context HttpServletRequest request) {
+	// Map<String, String> map = new HashMap<String, String>();
+	// map.put("a1", request.getParameter("a1"));
+	// map.put("a2", request.getParameter("a2"));
+	// map.put("a3", request.getQueryString());
+	// return map;
+	// }
 }
