@@ -13,10 +13,16 @@
 	</ul>
 
 	<form id="testForm" action="api/demo/update" method="post">
-		<label>a1 <input type="text" name="a1" value="3a"><label>a2<input
-				type="text" name="a2" value="3b"></label> <label><button
-					type="submit">form post submit</button></label> <label><button type="button"
-					onclick="testPassJsonByGet();">ajax get submit</button></label>
+		userName: <input type="text" name="userName" value="leson"> <br>
+		age: <input type="text" name="age" value="30"> <br>
+		<button type="submit">form post submit</button>
+		<br>
+		<button type="button" onclick="testPassJsonByGet();">ajax get
+			submit</button>
+		<br>
+		<button type="button" onclick="testPassJsonByPost();">ajax
+			post submit</button>
+		<br>
 	</form>
 
 	<script type="text/javascript"
@@ -28,7 +34,7 @@
 		function testPassJsonByGet() {
 			console.log("get in method");
 			var jsonObj = $("#testForm").serializeObject();
-			console.log(jsonObj);
+			console.log("ajax get json:" + jsonObj);
 			$.ajax({
 				url : 'api/demo/testGet',
 				type : 'get',
@@ -45,16 +51,19 @@
 				}
 			});
 		}
-		function testGetPassJson() {
+		function testPassJsonByPost() {
+			var jsonObj1 = JSON.stringify($("#testForm").serializeObject());
+			console.log("ajax post json:" + jsonObj1);
 			$.ajax({
-				url : 'api/demo/requestTest',
-				type : 'GET',
-				data : jsonObj,
+				url : 'api/demo/testPost',
+				type : 'POST',
+				data : jsonObj1,
 				dataType : 'json',
 				contentType : 'application/json',
 				async : false,
 				success : function(data) {
-					console.log("response data:" + data);
+					console.log("response data:" + data.userName);
+					console.log("json string data:"+JSON.stringify(data));
 				},
 				error : function() {
 					alert("ajax error");

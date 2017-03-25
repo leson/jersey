@@ -19,6 +19,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.pojo.User;
+
 /**
  * Root resource (exposed at "demo" path)
  */
@@ -97,15 +99,28 @@ public class MyResource {
 	@POST
 	@Path("/update")
 	@Produces("application/json")
-	public Map<String, String> update(@FormParam(value = "a1") String a1, @FormParam(value = "a2") String a2) {
+	public Map<String, String> update(@FormParam(value = "userName") String a1, @FormParam(value = "age") String a2) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("a1", a1);
-		map.put("a2", a2);
+		map.put("userName", a1);
+		map.put("age", a2);
 		return map;
 	}
-	
+
+	@POST
+	@Path("/testPost")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces("application/json")
+	public Map<String, String> add(User user) {
+		System.out.println(user.getAge());
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userName", user.getUserName());
+		map.put("age", user.getAge());
+		return map;
+	}
+
 	/**
 	 * can be use for ajax ,pass json.
+	 * 
 	 * @param a1
 	 * @param a2
 	 * @return
@@ -121,7 +136,7 @@ public class MyResource {
 		System.out.println(map);
 		return map;
 	}
-	
+
 	// @GET
 	// @Path("/requestTest")
 	// @Produces("application/json")
