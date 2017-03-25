@@ -24,16 +24,15 @@
 	<script type="text/javascript"
 		src="./assets/plugins/jquery-form-json.js"></script>
 	<script type="text/javascript">
-		var jsonObj = $("#testForm").serializeObject();
-		console.log(jsonObj);
-
-		//not success.report :
+		//
 		function testPostJson() {
 			console.log("get in method");
+			var jsonObj = $("#testForm").serializeObject();
+			console.log(jsonObj);
 			$.ajax({
 				url : 'api/demo/testGet',
 				type : 'get',
-				data : {"a1":"1111111","a2":"2222222"},
+				data : jsonObj,
 				dataType : 'json',
 				contentType : 'application/json',
 				async : true,
